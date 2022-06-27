@@ -3,6 +3,8 @@ const path = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 插件-自动清除dist目录内容
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// webpack.config.js
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     mode: 'development',
@@ -17,6 +19,7 @@ module.exports = {
             filename: 'index.html' // 生成文件的名称
         }), //插件-自动生成html文件
         // new CleanWebpackPlugin(), // 删除的是ouput path 里配置的那个输出文件的文件夹
+        new VueLoaderPlugin()
     ],
     devServer: { //添加服务器配置
         port: 3000, // 端口号
@@ -116,6 +119,10 @@ module.exports = {
                     }
                 }
             },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            }
         ]
     }
 }

@@ -33,14 +33,19 @@ document.body.appendChild(img1)
 import './assets/fonts/iconfont.css'
 
 // 加载器 - 处理高版本js语法
-class App {
+class App1 {
     static a = 123
 }
 
-console.log('一二三', App.a)
+console.log('一二三', App1.a)
 
 const fn = () => {
     console.log('四五六')
 }
 
 fn()
+
+import {createApp} from 'vue'
+import App from './App.vue';
+const app = createApp(App)
+app.mount('#app')
