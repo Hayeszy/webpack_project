@@ -28,3 +28,19 @@ import imgUrl1 from './assets/logo_small.png';
 const img1 = document.createElement('img');
 img1.src = imgUrl1
 document.body.appendChild(img1)
+
+// 引入字体图标文件
+import './assets/fonts/iconfont.css'
+
+// 加载器 - 处理高版本js语法
+class App {
+    static a = 123
+}
+
+console.log('一二三', App.a)
+
+const fn = () => {
+    console.log('四五六')
+}
+
+fn()

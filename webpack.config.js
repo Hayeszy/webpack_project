@@ -77,6 +77,45 @@ module.exports = {
                 //   // ext 文件扩展名
                 // }
             },
+            {// 字体图标 不配置也可以  css loader 也会处理的
+                // webpack 5
+                test: /\.(eot|svg|ttf|woff|woff2)$/, // 匹配所有的字体图标的文件
+                type: 'asset', // 文件直接输出
+                generator: { // 生产器
+                    filename: 'font-[name].[hash:6][ext]'
+                },
+                parser: { // 解析器 规则
+                    dataUrlCondition: { // dataUrl的情况
+                        maxSize: 1 * 1024,
+                        // maxSize 限制最大值
+                    },
+                },
+            },
+            // { // webpack4
+            //   test: /\.(eot|svg|ttf|woff|woff2)$/,
+            //   use: [  {
+            //     loader: 'url-loader',
+            //     options: {
+            //       limit: 1 * 1024,
+            //       // 小于这个 url-loader 转换成 based64 
+            //       // 大于  直接复制 file-loader
+            //         // 配置输出的文件名
+            //         name: '[name].[ext]',
+            //         // 配置输出的文件目录
+            //         outputPath: "fonts/"
+            //     }
+            // }]
+            // }
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/, // 排除在外
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'] // 预设:转码规则(用bable开发环境本来预设的)
+                    }
+                }
+            },
         ]
     }
 }
